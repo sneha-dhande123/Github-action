@@ -6,3 +6,21 @@ jobs:
     steps:
       - name: my-step
         run: echo "Hello World!"
+
+        
+email_notification:
+    runs-on: ubuntu-latest
+    needs: demo-email-notification
+    steps:
+      - name: Send Email Notification
+        uses: dawidd6/action-send-mail@v2
+        with:
+          server_address: ${{ secrets.MAIL_SERVER }}
+          server_port: ${{ secrets.PORT_NUMBER }}
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          from: 'noreply-sendgrid@znode.com'
+          subject: 'GitHub Actions Build Notification'
+          body: 'The GitHub Actions workflow has encountered an issue. Please check the build logs.'
+          to: 'sneha.dhande@amla.io'
+          content_type: text/plain
