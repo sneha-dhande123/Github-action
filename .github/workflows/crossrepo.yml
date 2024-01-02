@@ -1,0 +1,22 @@
+name: Use Files from Another Repo
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  use-files:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout dark.PNG
+        uses: actions/checkout@v2
+        with:
+          repository: sneha-dhande123/Calculator
+          path: .  # Adjust the path where you want to place the cloned repository
+          ref: master  # specify the branch or tag you want to checkout
+          fetch-depth: 1  # fetch only the latest commit to speed up the checkout process
+
+  
+
