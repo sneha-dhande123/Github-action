@@ -13,10 +13,12 @@ jobs:
       - name: Checkout dark.PNG
         uses: actions/checkout@v2
         with:
-          repository: sneha-dhande123/Calculator
-          path: .  # Adjust the path where you want to place the cloned repository
-          ref: master  # specify the branch or tag you want to checkout
-          fetch-depth: 1  # fetch only the latest commit to speed up the checkout process
+          #repository: sneha-dhande123/Calculator
+
+          git clone https://github.com/sneha-dhande123/Calculator
+          cd Calculator
+          git checkout master
+          ls
 
   
 
